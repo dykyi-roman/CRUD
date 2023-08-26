@@ -1,0 +1,21 @@
+{
+	"id": "42651922-808c-46b3-924e-3e02dad91966",
+	"name": "APP",
+	"values": [
+		{
+			"key": "host",
+			"value": "app-nginx-local",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "port",
+			"value": "443",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2023-05-05T09:01:25.396Z",
+	"_postman_exported_using": "Postman/10.13.5"
+}

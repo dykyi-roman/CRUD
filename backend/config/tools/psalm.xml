@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<psalm
+    totallyTyped="false"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config ./../../vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="./../../src" />
+        <ignoreFiles>
+            <directory name="./../../vendor" />
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <TypeDoesNotContainNull errorLevel="info" />
+        <RedundantCastGivenDocblockType errorLevel="info" />
+        <MismatchingDocblockReturnType errorLevel="info" />
+        <ImplicitToStringCast errorLevel="info" />
+        <InvalidNullableReturnType errorLevel="info" />
+        <InvalidPropertyAssignmentValue errorLevel="info" />
+        <UndefinedPropertyFetch errorLevel="info" />
+        <InvalidArrayOffset errorLevel="info" />
+        <InvalidReturnStatement errorLevel="info" />
+        <PossiblyUndefinedVariable errorLevel="info" />
+        <PossiblyFalseOperand errorLevel="info" />
+        <PossiblyNullReference errorLevel="info" />
+        <InvalidReturnType errorLevel="info" />
+        <UndefinedMethod errorLevel="info" />
+        <TooManyArguments errorLevel="info" />
+        <PossiblyNullIterator errorLevel="info" />
+        <InvalidArgument errorLevel="info" />
+        <InvalidCast errorLevel="info" />
+        <ParamNameMismatch errorLevel="info" />
+        <InvalidArrayAccess errorLevel="info" />
+        <PropertyTypeCoercion errorLevel="info" />
+        <UnsafeInstantiation errorLevel="info" />
+        <ImpureMethodCall errorLevel="info" />
+        <UnsafeInstantiation errorLevel="info" />
+        <MoreSpecificImplementedParamType errorLevel="info" />
+        <TypeDoesNotContainType errorLevel="info" />
+        <ImpureStaticProperty errorLevel="info" />
+        <LessSpecificImplementedReturnType errorLevel="info" />
+        <ArgumentTypeCoercion errorLevel="info" />
+        <PossiblyInvalidPropertyFetch errorLevel="info" />
+        <InvalidScalarArgument errorLevel="info" />
+        <InvalidOperand errorLevel="info" />
+        <RedundantPropertyInitializationCheck errorLevel="info" />
+        <ImplementedReturnTypeMismatch errorLevel="info" />
+        <UndefinedThisPropertyFetch errorLevel="info" />
+        <NonInvariantDocblockPropertyType errorLevel="info" />
+        <ForbiddenCode errorLevel="info" />
+        <PossiblyUndefinedArrayOffset errorLevel="info" />
+        <PossiblyNullPropertyFetch errorLevel="info" />
+        <UndefinedPropertyAssignment errorLevel="info" />
+        <LessSpecificReturnStatement errorLevel="info" />
+        <LessSpecificReturnType errorLevel="info" />
+        <DeprecatedMethod errorLevel="info" />
+        <DeprecatedProperty errorLevel="info" />
+        <DeprecatedClass errorLevel="info" />
+        <DeprecatedConstant errorLevel="info" />
+        <DeprecatedFunction errorLevel="info" />
+        <DeprecatedInterface errorLevel="info" />
+        <DeprecatedTrait errorLevel="info" />
+        <InternalMethod errorLevel="info" />
+        <InternalProperty errorLevel="info" />
+        <InternalClass errorLevel="info" />
+        <MissingClosureReturnType errorLevel="info" />
+        <MissingReturnType errorLevel="info" />
+        <MissingPropertyType errorLevel="info" />
+        <InvalidDocblock errorLevel="info" />
+        <PropertyNotSetInConstructor errorLevel="info" />
+        <MissingConstructor errorLevel="info" />
+        <MissingClosureParamType errorLevel="info" />
+        <MissingParamType errorLevel="info" />
+        <RedundantCondition errorLevel="info" />
+        <DocblockTypeContradiction errorLevel="info" />
+        <RedundantConditionGivenDocblockType errorLevel="info" />
+        <UnresolvableInclude errorLevel="info" />
+        <RawObjectIteration errorLevel="info" />
+        <InvalidStringClass errorLevel="info" />
+    </issueHandlers>
+</psalm>

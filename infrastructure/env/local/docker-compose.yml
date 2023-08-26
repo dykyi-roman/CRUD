@@ -1,0 +1,104 @@
+version: '3.7'
+services:
+    nginx:
+        build:
+            context: ../../containers/nginx
+            args:
+                - UID=${UID:-1000}
+                - GID=${GID:-1000}
+        image: app-nginx-${APP_ENV}
+        container_name: app-nginx-${APP_ENV}
+        ports:
+            - ${NGINX_PORT}:443
+        expose:
+            - ${NGINX_PORT}
+        volumes:
+            - ../../../backend:/var/www/html/code
+            - ../../containers/nginx/site.conf:/etc/nginx/conf.d/site.conf
+        links:
+            - php
+        networks:
+            - app-network
+    php:
+        build:
+            context: ../../containers/php
+            args:
+                - UID=${UID:-1000}
+                - GID=${GID:-1000}
+        image: app-php-${APP_ENV}
+        container_name: app-php-${APP_ENV}
+        ports:
+            - ${PHP_PORT}:9000
+        volumes:
+            - ../../../backend:/var/www/html/code
+            - ../../containers/php/php.ini:/usr/local/etc/php/php.ini
+        networks:
+            - app-network
+    mariadb:
+        image: mariadb:10.6.12
+        container_name: app-mariadb-${APP_ENV}
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MARIA_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MARIA_DATABASE}
+            MYSQL_USER: ${MARIA_USER}
+            MYSQL_PASSWORD: ${MARIA_PASSWORD}
+        ports:
+            - ${MARIA_PORT}:3306
+        restart: on-failure
+        volumes:
+            - ../../data/mariadb:/var/lib/mysql
+            - ../../containers/mysql/mariadb.cnf:/etc/mysql/mariadb.conf.d/mariadb.cnf
+            - ../../data/dumps:/var/lib/mysql/dumps
+        networks:
+            - app-network
+    mariadb_test:
+        image: mariadb:10.6.12
+        container_name: app-mariadb-test-${APP_ENV}
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MARIA_TEST_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MARIA_TEST_DATABASE}
+            MYSQL_USER: ${MARIA_TEST_USER}
+            MYSQL_PASSWORD: ${MARIA_TEST_PASSWORD}
+        ports:
+            - ${MARIA_TEST_PORT}:3306
+        restart: on-failure
+        volumes:
+            - ../../data/mariadb-test:/var/lib/mysql
+            - ../../containers/mysql/mariadb.cnf:/etc/mysql/mariadb.conf.d/mariadb.cnf
+            - ../../data/dumps:/var/lib/mysql/dumps
+        networks:
+            - app-network
+    newman:
+        image: postman/newman
+        container_name: app-newman-${APP_ENV}
+        command:
+            run api_collection.json --insecure
+            -e api_environment.json
+            -r cli
+        links:
+            - nginx
+        volumes:
+            - ../../postman:/etc/newman
+        networks:
+            - app-network
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: app_phpmyadmin
+        restart: always
+        links:
+            - mariadb
+            - mariadb_test
+        ports:
+            - ${PHPMYADMIN_PORT}:80
+        environment:
+            MYSQL_USERNAME: ${MARIA_USER}
+            MYSQL_ROOT_PASSWORD: ${MARIA_ROOT_PASSWORD}
+            PMA_ARBITRARY: 1
+        volumes:
+            - ../../containers/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+        networks:
+            - app-network
+networks:
+    app-network:
+        name: app-network
+        external: true

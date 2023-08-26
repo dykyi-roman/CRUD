@@ -1,0 +1,23 @@
+actor: AcceptanceTester
+modules:
+    enabled:
+        - REST:
+              depends: Symfony
+              shortDebugResponse: 300 # only the first 300 chars of the response
+        - Symfony:
+              app_path: '../../src/Application'
+              kernel_class: 'Application\Kernel'
+              environment: 'test'
+        - Cli:
+        - Db:
+            dsn: 'mysql:host=%DATABASE_TEST_HOST%;dbname=%DATABASE_TEST_NAME%'
+            user: '%DATABASE_TEST_USER%'
+            password: '%DATABASE_TEST_PASSWORD%'
+            cleanup: true
+            populate: true
+            dump:
+              - '../../tests/_data/dump.sql'
+        - Doctrine2:
+            depends: Symfony
+            cleanup: false # All doctrine queries will be wrapped in a transaction, which will be rolled back at the end of each test
+    step_decorators: ~

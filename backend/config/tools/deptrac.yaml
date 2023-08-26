@@ -1,0 +1,51 @@
+parameters:
+    paths:
+        - ./../../src/
+    layers:
+      - name: UI
+        collectors:
+          - type: bool
+            must:
+              - type: className
+                regex: UI\\.*
+      - name: Application
+        collectors:
+          - type: bool
+            must:
+              - type: className
+                regex: Application\\.*
+      - name: Domain
+        collectors:
+          - type: bool
+            must:
+              - type: directory
+                regex: Component/*
+            must_not:
+              - type: className
+                regex: .*.Exception
+              - type: className
+                regex: .*.Interface
+              - type: className
+                regex: Model\\.*.
+              - type: className
+                regex: Enum\\.*.
+              - type: className
+                regex: Event\\.*.
+              - type: className
+                regex: Dto\\.*.
+      - name: Infrastructure
+        collectors:
+          - type: bool
+            must:
+              - type: directory
+                regex: Infrastructure/*
+            must_not:
+              - type: className
+                regex: Helper\\*
+    ruleset:
+      UI:
+        - Application
+      Application:
+        - Domain
+      Domain: ~
+      Infrastructure: ~

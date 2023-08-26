@@ -1,0 +1,9 @@
+parameters:
+    level: 9
+    paths:
+        - ../../src
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+    	- '#Cannot cast mixed to string.#'
