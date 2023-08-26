@@ -1,5 +1,13 @@
 # CRUD
 
+**Application:**
+* Mapping Request Data to Typed Objects
+* ADR pattern
+* DDD tactical patterns
+* Layered Architecture for code structure
+* CI
+* Functional tests
+
 ### How to Install locally
 
 1) Execute command: `make install`
