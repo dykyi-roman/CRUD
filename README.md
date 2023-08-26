@@ -45,12 +45,12 @@ Execute command: `make ci`
 
 <b>PHP CS Fixer</b> - `make backend-phpcs`
 
-<b>PHPStan</b> - PHPStan scans your whole codebase and looks for both obvious & tricky bugs. Execute command: `make backend-phpstan`
+<b>PHPStan</b> - PHPStan scans your whole codebase and looks for both obvious & tricky bugs. Execute the command: `make backend-phpstan`
 
-<b>Psalm</b> - Psalm is a static analysis tool for finding errors in PHP applications. Execute command: `make backend-psalm`
+<b>Psalm</b> - Psalm is a static analysis tool for finding errors in PHP applications. Execute the command: `make backend-psalm`
 
-<b>Deptrac</b> - Deptrac is a static code analysis tool for PHP that helps you communicate, visualize and enforce architectural decisions in your projects. Execute command: `make backend-deptrac`
+<b>Deptrac</b> - Deptrac is a static code analysis tool for PHP that helps you communicate, visualize and enforce architectural decisions in your projects. Execute the command: `make backend-deptrac`
 
-<b>Newman</b> - Newman is a command-line collection runner for Postman. It allows you to effortlessly run and test a Postman collection. Execute command: `make test-postman`
+<b>Newman</b> - Newman is a command-line collection runner for Postman. It allows you to effortlessly run and test a Postman collection. Execute the command: `make test-postman`
 
-<b>Unit tests</b> - Unit testing is testing the smallest testable unit of an application. Execute command: `make backend-test-run unit`
+<b>Tests</b> - Unit testing is testing the smallest testable unit of an application. Execute command: `make backend-test-run`
